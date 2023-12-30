@@ -61,7 +61,7 @@ int main() {
 
 
     for (int i = 0; i < numThreads; ++i) {
-        threads[i] = std::thread(calculate, i, calculationLength[i]);
+        threads[i] = std::thread(calculate, i, calculationTime[i]);
     }
 
     for (int i = 0; i < numThreads; ++i) {

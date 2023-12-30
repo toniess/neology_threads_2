@@ -25,8 +25,9 @@ private:
 
 
 void swap(Data& a, Data& b) {
-    std::lock_guard<std::mutex> lock_a(a.mtx);
-    std::lock_guard<std::mutex> lock_b(b.mtx);
+    std::lock(a.mtx, b.mtx);
+    std::lock_guard<std::mutex> lock_a(a.mtx, std::adopt_lock);
+    std::lock_guard<std::mutex> lock_b(b.mtx, std::adopt_lock);
 
     int tmp = a.data;
     a.data = b.data;
